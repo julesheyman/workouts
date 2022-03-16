@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :fastest_times
   resources :workouts
   devise_for :users
   resources :users

@@ -1,0 +1,51 @@
+<div class="card mb-3">
+  <h2 class="card-header h4">
+    Fastest Time #<%= fastest_time.id %>
+  </h2>
+
+  <div class="card-body">
+    <dl class="mb-1">
+      <dt>Sport</dt>
+      <!-- Display sport_id start -->
+      <dd><%= fastest_time.sport_id %></dd>
+      <!-- Display sport_id end -->
+
+      <dt>Time spent</dt>
+      <!-- Display time_spent start -->
+      <dd><%= fastest_time.time_spent %></dd>
+      <!-- Display time_spent end -->
+
+      <dt>Workout</dt>
+      <!-- Display workout_id start -->
+      <dd><%= fastest_time.workout_id %></dd>
+      <!-- Display workout_id end -->
+
+    </dl>
+
+    <div class="row">
+      <div class="col">
+        <%= link_to_show_or_back fastest_time, '<i class="fas fa-search-plus"></i>'.html_safe, '<i class="fas fa-chevron-left"></i>'.html_safe, class: "btn btn-block btn-outline-secondary" %>
+      </div>
+
+      <!-- Edit link fastest_time start -->
+      <div class="col">
+        <%= link_to edit_fastest_time_url(fastest_time), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+      </div>
+      <!-- Edit link fastest_time end -->
+
+      <!-- Delete link fastest_time start -->
+      <div class="col">
+        <%= link_to fastest_time, method: :delete, data: { confirm: "Do you really want to delete this fastest_time?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </div>
+      <!-- Delete link fastest_time end -->
+    </div>
+  </div>
+
+  <div class="card-footer text-muted">
+    Last updated <%= time_ago_in_words(fastest_time.updated_at) %> ago
+  </div>
+</div>

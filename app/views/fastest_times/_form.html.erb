@@ -1,0 +1,83 @@
+<% was_validated = fastest_time.errors.any? %>
+
+<%= form_with(model: fastest_time, local: true, novalidate: true, class: "mb-3") do |f| %>
+  <!-- Label and input for sport_id start -->
+  <div class="form-group">
+    <% sport_class = "form-control" %>
+    <% sport_was_invalid = fastest_time.errors.include?(:sport) %>
+
+    <% if was_validated %>
+      <% if sport_was_invalid %>
+        <% sport_class << " is-invalid" %>
+      <% else %>
+        <% sport_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :sport_id %>
+    <!-- Input for sport_id start -->
+    <%= f.number_field :sport_id, class: sport_class, placeholder: "Enter sport" %>
+    <!-- Input for sport_id end -->
+    <% if sport_was_invalid %>
+      <% fastest_time.errors.full_messages_for(:sport).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for sport_id end -->
+  <!-- Label and input for time_spent start -->
+  <div class="form-group">
+    <% time_spent_class = "form-control" %>
+    <% time_spent_was_invalid = fastest_time.errors.include?(:time_spent) %>
+
+    <% if was_validated %>
+      <% if time_spent_was_invalid %>
+        <% time_spent_class << " is-invalid" %>
+      <% else %>
+        <% time_spent_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :time_spent %>
+    <!-- Input for time_spent start -->
+    <%= f.text_field :time_spent, class: time_spent_class, placeholder: "Enter time spent" %>
+    <!-- Input for time_spent end -->
+    <% if time_spent_was_invalid %>
+      <% fastest_time.errors.full_messages_for(:time_spent).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for time_spent end -->
+  <!-- Label and input for workout_id start -->
+  <div class="form-group">
+    <% workout_class = "form-control" %>
+    <% workout_was_invalid = fastest_time.errors.include?(:workout) %>
+
+    <% if was_validated %>
+      <% if workout_was_invalid %>
+        <% workout_class << " is-invalid" %>
+      <% else %>
+        <% workout_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :workout_id %>
+    <!-- Input for workout_id start -->
+    <%= f.number_field :workout_id, class: workout_class, placeholder: "Enter workout" %>
+    <!-- Input for workout_id end -->
+    <% if workout_was_invalid %>
+      <% fastest_time.errors.full_messages_for(:workout).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <!-- Label and input for workout_id end -->
+  <%= f.button class: "btn btn-outline-secondary btn-block" %>
+<% end %>
