@@ -24,7 +24,12 @@ class FastestTimesController < ApplicationController
     @fastest_time = FastestTime.new(fastest_time_params)
 
     if @fastest_time.save
-      redirect_to @fastest_time, notice: 'Fastest time was successfully created.'
+      message = 'FastestTime was successfully created.'
+      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referrer, notice: message
+      else
+        redirect_to @fastest_time, notice: message
+      end
     else
       render :new
     end

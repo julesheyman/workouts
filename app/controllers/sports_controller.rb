@@ -8,6 +8,8 @@ class SportsController < ApplicationController
 
   # GET /sports/1
   def show
+    @workout = Workout.new
+    @fastest_time = FastestTime.new
   end
 
   # GET /sports/new
