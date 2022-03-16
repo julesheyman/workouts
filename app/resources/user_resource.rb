@@ -7,7 +7,5 @@ class UserResource < ApplicationResource
 
   # Direct associations
 
-  has_many :workouts
-
   # Indirect associations
 end

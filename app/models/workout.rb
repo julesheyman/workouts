@@ -6,8 +6,6 @@ class Workout < ApplicationRecord
   has_many   :fastest_times,
              dependent: :destroy
 
-  belongs_to :user
-
   # Indirect associations
 
   # Validations

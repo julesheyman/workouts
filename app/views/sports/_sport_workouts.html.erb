@@ -12,10 +12,8 @@
       <li class="list-group-item d-flex align-items-center justify-content-between">
         <%= link_to workout, workout %>
 
-        <% if current_user == workout.user %>
-          <%= link_to workout, method: :delete do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
+        <%= link_to workout, method: :delete, data: { confirm: "Do you really want to delete this workout" } do %>
+          <i class="fas fa-trash-alt"></i>
         <% end %>
 
       </li>
