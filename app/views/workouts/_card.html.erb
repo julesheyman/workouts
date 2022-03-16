@@ -12,12 +12,20 @@
 
       <dt>User</dt>
       <!-- Display user_id start -->
-      <dd><%= workout.user_id %></dd>
+      <dd>
+        <% if @workout.user.present? %>
+          <%= link_to workout.user, workout.user %>
+        <% end %>
+      </dd>
       <!-- Display user_id end -->
 
       <dt>Sport</dt>
       <!-- Display sport_id start -->
-      <dd><%= workout.sport_id %></dd>
+      <dd>
+        <% if @workout.sport.present? %>
+          <%= link_to workout.sport, workout.sport %>
+        <% end %>
+      </dd>
       <!-- Display sport_id end -->
 
       <dt>Distance</dt>

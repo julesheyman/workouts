@@ -7,7 +7,11 @@
     <dl class="mb-1">
       <dt>Sport</dt>
       <!-- Display sport_id start -->
-      <dd><%= fastest_time.sport_id %></dd>
+      <dd>
+        <% if @fastest_time.sport.present? %>
+          <%= link_to fastest_time.sport, fastest_time.sport %>
+        <% end %>
+      </dd>
       <!-- Display sport_id end -->
 
       <dt>Time spent</dt>
@@ -17,7 +21,11 @@
 
       <dt>Workout</dt>
       <!-- Display workout_id start -->
-      <dd><%= fastest_time.workout_id %></dd>
+      <dd>
+        <% if @fastest_time.workout.present? %>
+          <%= link_to fastest_time.workout, fastest_time.workout %>
+        <% end %>
+      </dd>
       <!-- Display workout_id end -->
 
     </dl>
