@@ -15,8 +15,10 @@
         <!-- Show link end -->
 
         <!-- Delete link start -->
-        <%= link_to workout, method: :delete, data: { confirm: "Do you really want to delete this workout" } do %>
-          <i class="fas fa-trash-alt"></i>
+        <% if current_user == workout.user %>
+          <%= link_to workout, method: :delete do %>
+            <i class="fas fa-trash-alt"></i>
+          <% end %>
         <% end %>
         <!-- Delete link end -->
 
