@@ -4,6 +4,8 @@ RSpec.describe Workout, type: :model do
   
     describe "Direct Associations" do
 
+    it { should belong_to(:sport) }
+
     it { should have_many(:fastest_times) }
 
     it { should belong_to(:user) }

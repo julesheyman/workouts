@@ -1,6 +1,8 @@
 class Workout < ApplicationRecord
   # Direct associations
 
+  belongs_to :sport
+
   has_many   :fastest_times,
              :dependent => :destroy
 

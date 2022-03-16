@@ -4,6 +4,8 @@ RSpec.describe Sport, type: :model do
   
     describe "Direct Associations" do
 
+    it { should have_many(:workouts) }
+
     it { should have_many(:fastest_times) }
 
     end
