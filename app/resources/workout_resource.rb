@@ -3,7 +3,6 @@ class WorkoutResource < ApplicationResource
   attribute :created_at, :datetime, writable: false
   attribute :updated_at, :datetime, writable: false
   attribute :description, :string
-  attribute :user_id, :integer
   attribute :sport_id, :integer
   attribute :distance, :string
   attribute :date, :string
@@ -13,8 +12,6 @@ class WorkoutResource < ApplicationResource
   belongs_to :sport
 
   has_many   :fastest_times
-
-  belongs_to :user
 
   # Indirect associations
 end
