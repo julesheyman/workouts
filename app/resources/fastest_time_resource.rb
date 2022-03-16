@@ -8,6 +8,8 @@ class FastestTimeResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :sport
+
   belongs_to :workout
 
   # Indirect associations
