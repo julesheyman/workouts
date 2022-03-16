@@ -1,28 +1,23 @@
 class SportsController < ApplicationController
   before_action :set_sport, only: %i[show edit update destroy]
 
-  # GET /sports
   def index
     @q = Sport.ransack(params[:q])
     @sports = @q.result(distinct: true).includes(:fastest_times,
                                                  :workouts).page(params[:page]).per(10)
   end
 
-  # GET /sports/1
   def show
     @workout = Workout.new
     @fastest_time = FastestTime.new
   end
 
-  # GET /sports/new
   def new
     @sport = Sport.new
   end
 
-  # GET /sports/1/edit
   def edit; end
 
-  # POST /sports
   def create
     @sport = Sport.new(sport_params)
 
@@ -33,7 +28,6 @@ class SportsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /sports/1
   def update
     if @sport.update(sport_params)
       redirect_to @sport, notice: "Sport was successfully updated."
@@ -42,7 +36,6 @@ class SportsController < ApplicationController
     end
   end
 
-  # DELETE /sports/1
   def destroy
     @sport.destroy
     redirect_to sports_url, notice: "Sport was successfully destroyed."
@@ -50,12 +43,10 @@ class SportsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_sport
     @sport = Sport.find(params[:id])
   end
 
-  # Only allow a trusted parameter "white list" through.
   def sport_params
     params.require(:sport).permit(:name, :description)
   end
