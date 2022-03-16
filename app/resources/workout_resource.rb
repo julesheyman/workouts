@@ -10,6 +10,8 @@ class WorkoutResource < ApplicationResource
 
   # Direct associations
 
+  belongs_to :sport
+
   has_many   :fastest_times
 
   belongs_to :user

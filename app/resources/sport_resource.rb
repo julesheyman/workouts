@@ -7,6 +7,8 @@ class SportResource < ApplicationResource
 
   # Direct associations
 
+  has_many   :workouts
+
   has_many   :fastest_times
 
   # Indirect associations
