@@ -10,26 +10,20 @@
   <ul class="list-group list-group-flush">
     <% @sport.workouts.each do |workout| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to workout, workout %>
-        <!-- Show link end -->
 
-        <!-- Delete link start -->
         <% if current_user == workout.user %>
           <%= link_to workout, method: :delete do %>
             <i class="fas fa-trash-alt"></i>
           <% end %>
         <% end %>
-        <!-- Delete link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="sport_workouts_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "sports/sport_workouts_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 

@@ -10,18 +10,14 @@
   <ul class="list-group list-group-flush">
     <% @user.workouts.each do |workout| %>
       <li class="list-group-item d-flex align-items-center justify-content-between">
-        <!-- Show link start -->
         <%= link_to workout, workout %>
-        <!-- Show link end -->
 
       </li>
     <% end %>
 
     <div class="card-footer">
       <div class="collapse" id="user_workouts_new_form">
-        <!-- New associationcollection form start -->
         <%= render partial: "users/user_workouts_new_form" %>
-        <!-- New associationcollection form end -->
       </div>
     </div>
 
