@@ -3,7 +3,7 @@ class FastestTimesController < ApplicationController
 
   # GET /fastest_times
   def index
-    @fastest_times = FastestTime.all
+    @fastest_times = FastestTime.page(params[:page]).per(10)
   end
 
   # GET /fastest_times/1

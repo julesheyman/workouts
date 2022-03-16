@@ -3,7 +3,7 @@ class SportsController < ApplicationController
 
   # GET /sports
   def index
-    @sports = Sport.all
+    @sports = Sport.page(params[:page]).per(10)
   end
 
   # GET /sports/1

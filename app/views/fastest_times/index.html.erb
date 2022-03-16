@@ -34,6 +34,10 @@
       <div class="list-group list-group-flush">
         <%= render collection: @fastest_times, partial: "list_item", as: :fastest_time %>
       </div>
+      <div class="card-footer d-flex justify-content-center">
+        <%= paginate @fastest_times, theme: 'twitter-bootstrap-4' %>
+      </div>
+
     </div>
   </div>
 </div>
