@@ -23,7 +23,6 @@
       <% end %>
     <% end %>
   </div>
-  <%= f.hidden_field :user_id, value: current_user.id %>
   <div class="form-group">
     <% sport_class = "form-control" %>
     <% sport_was_invalid = workout.errors.include?(:sport) %>
@@ -84,6 +83,28 @@
     <%= f.text_field :date, class: date_class, placeholder: "Enter date" %>
     <% if date_was_invalid %>
       <% workout.errors.full_messages_for(:date).each do |message| %>
+        <div class="invalid-feedback d-flex">
+          <%= message %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% name_class = "form-control" %>
+    <% name_was_invalid = workout.errors.include?(:name) %>
+
+    <% if was_validated %>
+      <% if name_was_invalid %>
+        <% name_class << " is-invalid" %>
+      <% else %>
+        <% name_class << " is-valid" %>
+      <% end %>
+    <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name, class: name_class, placeholder: "Enter name" %>
+    <% if name_was_invalid %>
+      <% workout.errors.full_messages_for(:name).each do |message| %>
         <div class="invalid-feedback d-flex">
           <%= message %>
         </div>

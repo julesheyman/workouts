@@ -5,9 +5,7 @@ class UsersController < ApplicationController
     @users = User.page(params[:page]).per(10)
   end
 
-  def show
-    @workout = Workout.new
-  end
+  def show; end
 
   def new
     @user = User.new
