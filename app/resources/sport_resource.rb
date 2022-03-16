@@ -12,5 +12,4 @@ class SportResource < ApplicationResource
   has_many   :fastest_times
 
   # Indirect associations
-
 end

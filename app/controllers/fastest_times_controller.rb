@@ -1,15 +1,15 @@
 class FastestTimesController < ApplicationController
-  before_action :set_fastest_time, only: [:show, :edit, :update, :destroy]
+  before_action :set_fastest_time, only: %i[show edit update destroy]
 
   # GET /fastest_times
   def index
     @q = FastestTime.ransack(params[:q])
-    @fastest_times = @q.result(:distinct => true).includes(:workout, :sport).page(params[:page]).per(10)
+    @fastest_times = @q.result(distinct: true).includes(:workout,
+                                                        :sport).page(params[:page]).per(10)
   end
 
   # GET /fastest_times/1
-  def show
-  end
+  def show; end
 
   # GET /fastest_times/new
   def new
@@ -17,17 +17,16 @@ class FastestTimesController < ApplicationController
   end
 
   # GET /fastest_times/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /fastest_times
   def create
     @fastest_time = FastestTime.new(fastest_time_params)
 
     if @fastest_time.save
-      message = 'FastestTime was successfully created.'
-      if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-        redirect_back fallback_location: request.referrer, notice: message
+      message = "FastestTime was successfully created."
+      if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+        redirect_back fallback_location: request.referer, notice: message
       else
         redirect_to @fastest_time, notice: message
       end
@@ -39,7 +38,8 @@ class FastestTimesController < ApplicationController
   # PATCH/PUT /fastest_times/1
   def update
     if @fastest_time.update(fastest_time_params)
-      redirect_to @fastest_time, notice: 'Fastest time was successfully updated.'
+      redirect_to @fastest_time,
+                  notice: "Fastest time was successfully updated."
     else
       render :edit
     end
@@ -49,22 +49,22 @@ class FastestTimesController < ApplicationController
   def destroy
     @fastest_time.destroy
     message = "FastestTime was successfully deleted."
-    if Rails.application.routes.recognize_path(request.referrer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
-      redirect_back fallback_location: request.referrer, notice: message
+    if Rails.application.routes.recognize_path(request.referer)[:controller] != Rails.application.routes.recognize_path(request.path)[:controller]
+      redirect_back fallback_location: request.referer, notice: message
     else
       redirect_to fastest_times_url, notice: message
     end
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_fastest_time
-      @fastest_time = FastestTime.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def fastest_time_params
-      params.require(:fastest_time).permit(:sport_id, :time_spent, :workout_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_fastest_time
+    @fastest_time = FastestTime.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def fastest_time_params
+    params.require(:fastest_time).permit(:sport_id, :time_spent, :workout_id)
+  end
 end

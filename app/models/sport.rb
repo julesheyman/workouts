@@ -2,10 +2,10 @@ class Sport < ApplicationRecord
   # Direct associations
 
   has_many   :workouts,
-             :dependent => :destroy
+             dependent: :destroy
 
   has_many   :fastest_times,
-             :dependent => :destroy
+             dependent: :destroy
 
   # Indirect associations
 
@@ -16,5 +16,4 @@ class Sport < ApplicationRecord
   def to_s
     name
   end
-
 end

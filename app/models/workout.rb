@@ -4,7 +4,7 @@ class Workout < ApplicationRecord
   belongs_to :sport
 
   has_many   :fastest_times,
-             :dependent => :destroy
+             dependent: :destroy
 
   belongs_to :user
 
@@ -17,5 +17,4 @@ class Workout < ApplicationRecord
   def to_s
     description
   end
-
 end

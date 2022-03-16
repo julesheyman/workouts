@@ -13,5 +13,4 @@ class FastestTimeResource < ApplicationResource
   belongs_to :workout
 
   # Indirect associations
-
 end

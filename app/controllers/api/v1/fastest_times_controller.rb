@@ -13,7 +13,7 @@ class Api::V1::FastestTimesController < Api::V1::GraphitiController
     fastest_time = FastestTimeResource.build(params)
 
     if fastest_time.save
-      render jsonapi: fastest_time, status: 201
+      render jsonapi: fastest_time, status: :created
     else
       render jsonapi_errors: fastest_time
     end
@@ -33,7 +33,7 @@ class Api::V1::FastestTimesController < Api::V1::GraphitiController
     fastest_time = FastestTimeResource.find(params)
 
     if fastest_time.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: fastest_time
     end

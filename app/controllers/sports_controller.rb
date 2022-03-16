@@ -1,10 +1,11 @@
 class SportsController < ApplicationController
-  before_action :set_sport, only: [:show, :edit, :update, :destroy]
+  before_action :set_sport, only: %i[show edit update destroy]
 
   # GET /sports
   def index
     @q = Sport.ransack(params[:q])
-    @sports = @q.result(:distinct => true).includes(:fastest_times, :workouts).page(params[:page]).per(10)
+    @sports = @q.result(distinct: true).includes(:fastest_times,
+                                                 :workouts).page(params[:page]).per(10)
   end
 
   # GET /sports/1
@@ -19,15 +20,14 @@ class SportsController < ApplicationController
   end
 
   # GET /sports/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /sports
   def create
     @sport = Sport.new(sport_params)
 
     if @sport.save
-      redirect_to @sport, notice: 'Sport was successfully created.'
+      redirect_to @sport, notice: "Sport was successfully created."
     else
       render :new
     end
@@ -36,7 +36,7 @@ class SportsController < ApplicationController
   # PATCH/PUT /sports/1
   def update
     if @sport.update(sport_params)
-      redirect_to @sport, notice: 'Sport was successfully updated.'
+      redirect_to @sport, notice: "Sport was successfully updated."
     else
       render :edit
     end
@@ -45,17 +45,18 @@ class SportsController < ApplicationController
   # DELETE /sports/1
   def destroy
     @sport.destroy
-    redirect_to sports_url, notice: 'Sport was successfully destroyed.'
+    redirect_to sports_url, notice: "Sport was successfully destroyed."
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_sport
-      @sport = Sport.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def sport_params
-      params.require(:sport).permit(:name, :description)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_sport
+    @sport = Sport.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def sport_params
+    params.require(:sport).permit(:name, :description)
+  end
 end

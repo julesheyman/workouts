@@ -13,7 +13,7 @@ class Api::V1::SportsController < Api::V1::GraphitiController
     sport = SportResource.build(params)
 
     if sport.save
-      render jsonapi: sport, status: 201
+      render jsonapi: sport, status: :created
     else
       render jsonapi_errors: sport
     end
@@ -33,7 +33,7 @@ class Api::V1::SportsController < Api::V1::GraphitiController
     sport = SportResource.find(params)
 
     if sport.destroy
-      render jsonapi: { meta: {} }, status: 200
+      render jsonapi: { meta: {} }, status: :ok
     else
       render jsonapi_errors: sport
     end

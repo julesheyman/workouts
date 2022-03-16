@@ -14,5 +14,4 @@ class FastestTime < ApplicationRecord
   def to_s
     sport.to_s
   end
-
 end
