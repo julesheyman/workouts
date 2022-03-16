@@ -16,7 +16,7 @@
 
     <%= f.label :sport_id %>
     <!-- Input for sport_id start -->
-    <%= f.number_field :sport_id, class: sport_class, placeholder: "Enter sport" %>
+    <%= f.collection_select :sport_id, Sport.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for sport_id end -->
     <% if sport_was_invalid %>
       <% fastest_time.errors.full_messages_for(:sport).each do |message| %>

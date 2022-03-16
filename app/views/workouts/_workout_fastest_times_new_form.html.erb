@@ -7,7 +7,7 @@
     <%= f.label :sport_id %>
 
     <!-- Input for sport_id start -->
-    <%= f.text_field :sport_id, class: "form-control" %>
+    <%= f.collection_select :sport_id, Sport.all, :id, :to_s, {}, class: "form-control" %>
     <!-- Input for sport_id end -->
   </div>
   <!-- Label and input for sport_id end -->
