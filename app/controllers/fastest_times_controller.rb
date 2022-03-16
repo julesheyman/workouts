@@ -3,7 +3,8 @@ class FastestTimesController < ApplicationController
 
   # GET /fastest_times
   def index
-    @fastest_times = FastestTime.page(params[:page]).per(10)
+    @q = FastestTime.ransack(params[:q])
+    @fastest_times = @q.result(:distinct => true).includes(:workout, :sport).page(params[:page]).per(10)
   end
 
   # GET /fastest_times/1
