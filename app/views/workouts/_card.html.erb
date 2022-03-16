@@ -8,13 +8,6 @@
       <dt>Description</dt>
       <dd><%= workout.description %></dd>
 
-      <dt>User</dt>
-      <dd>
-        <% if @workout.user.present? %>
-          <%= link_to workout.user, workout.user %>
-        <% end %>
-      </dd>
-
       <dt>Sport</dt>
       <dd>
         <% if @workout.sport.present? %>
@@ -28,6 +21,9 @@
       <dt>Date</dt>
       <dd><%= workout.date %></dd>
 
+      <dt>Name</dt>
+      <dd><%= workout.name %></dd>
+
     </dl>
 
     <div class="row">
@@ -36,18 +32,14 @@
       </div>
 
       <div class="col">
-        <% if current_user == @workout.user %>
-          <%= link_to edit_workout_url(workout), class: "btn btn-block btn-sm btn-outline-secondary" do %>
-            <i class="fas fa-edit"></i>
-          <% end %>
+        <%= link_to edit_workout_url(workout), class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-edit"></i>
         <% end %>
       </div>
 
       <div class="col">
-        <% if current_user == @workout.user %>
-          <%= link_to workout, method: :delete, data: { confirm: "Do you really want to delete this workout?" }, class: "btn btn-block btn-outline-secondary" do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
+        <%= link_to workout, method: :delete, data: { confirm: "Do you really want to delete this workout?" }, class: "btn btn-block btn-outline-secondary" do %>
+          <i class="fas fa-trash-alt"></i>
         <% end %>
       </div>
     </div>

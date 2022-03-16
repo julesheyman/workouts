@@ -1,5 +1,5 @@
 ActiveAdmin.register Workout do
-  permit_params :description, :user_id, :sport_id, :distance, :date
+  permit_params :description, :sport_id, :distance, :date, :name
 
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
